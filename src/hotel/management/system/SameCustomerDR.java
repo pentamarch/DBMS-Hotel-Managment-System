@@ -17,7 +17,7 @@ import java.sql.*;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-public class NewCustomer extends JFrame {
+public class SameCustomerDR extends JFrame {
 	Connection conn = null;
 	PreparedStatement pst = null;
 	private JPanel contentPane;
@@ -41,7 +41,7 @@ public class NewCustomer extends JFrame {
 		});
 	}
 
-	public NewCustomer() throws SQLException {
+	public SameCustomerDR() throws SQLException {
 		
                 setBounds(530, 200, 850, 550);
 		contentPane = new JPanel();
@@ -60,20 +60,8 @@ public class NewCustomer extends JFrame {
 		lblName.setBounds(118, 11, 260, 53);
 		contentPane.add(lblName);
                 
-                /*JLabel lblId = new JLabel("ID :");
-		lblId.setBounds(35, 76, 200, 14);
-		contentPane.add(lblId);
-                
-                
-                t0 = new JTextField();
-		t0.setBounds(271, 73, 150, 20);
-		contentPane.add(t0);
-		t0.setColumns(10);
-                comboBox = new JComboBox(new String[] {"Passport", "Aadhar Card", "Voter Id", "Driving license"});
-		comboBox.setBounds(271, 73, 150, 20);
-		contentPane.add(comboBox);*/
-                
-                JLabel l2 = new JLabel("Number :");
+            
+                JLabel l2 = new JLabel("Adhar Number :");
 		l2.setBounds(35, 111, 200, 14);
 		contentPane.add(l2);
                 
@@ -82,7 +70,11 @@ public class NewCustomer extends JFrame {
 		contentPane.add(t1);
 		t1.setColumns(10);
 		
-		JLabel lblName_1 = new JLabel("Name :");
+		
+                
+              
+		
+		JLabel lblName_1 = new JLabel("Allocated room number :");
 		lblName_1.setBounds(35, 151, 200, 14);
 		contentPane.add(lblName_1);
 		
@@ -90,70 +82,26 @@ public class NewCustomer extends JFrame {
 		t2.setBounds(271, 151, 150, 20);
 		contentPane.add(t2);
 		t2.setColumns(10);
-
                 
-		JLabel lblGender = new JLabel("Gender :");
-		lblGender.setBounds(35, 191, 200, 14);
-		contentPane.add(lblGender);
-                
-                r1 = new JRadioButton("Male");
-                r1.setFont(new Font("Raleway", Font.BOLD, 14));
-                r1.setBackground(Color.WHITE);
-                r1.setBounds(271, 191, 80, 12);
-                add(r1);
-                
-                r2 = new JRadioButton("Female");
-                r2.setFont(new Font("Raleway", Font.BOLD, 14));
-                r2.setBackground(Color.WHITE);
-                r2.setBounds(350, 191, 100, 12);
-		add(r2);
-                
-		JLabel lblCountry = new JLabel("Country :");
-		lblCountry.setBounds(35, 231, 200, 14);
-		contentPane.add(lblCountry);
-		
-		JLabel lblReserveRoomNumber = new JLabel("Allocated Room Number :");
-		lblReserveRoomNumber.setBounds(35, 274, 200, 14);
-		contentPane.add(lblReserveRoomNumber);
-                
-                c1 = new Choice();
-               /* try{
-                    conn c = new conn();
-                    ResultSet rs = c.s.executeQuery("select * from room");
-                    while(rs.next()){
-                        c1.add(rs.getString("room_number"));    
-                    }
-                }catch(Exception e){ }*/
-                c1.setBounds(271, 274, 150, 20);
-		contentPane.add(c1);
-		
-		JLabel lblCheckInStatus = new JLabel("Checked-In :");
-		lblCheckInStatus.setBounds(35, 316, 200, 14);
-		contentPane.add(lblCheckInStatus);
-		
-		JLabel lblDeposite = new JLabel("Deposit :");
-		lblDeposite.setBounds(35, 359, 200, 14);
-		contentPane.add(lblDeposite);
-		
-		
-		
-		
+                JLabel lblName_2 = new JLabel("No of days :");
+		lblName_2.setBounds(35, 191, 200, 14);
+		contentPane.add(lblName_2);
 		
 		t3 = new JTextField();
-		t3.setBounds(271, 231, 150, 20);
+		t3.setBounds(271, 191, 150, 20);
 		contentPane.add(t3);
 		t3.setColumns(10);
+                
+                JLabel lblName_3 = new JLabel("Deposite :");
+		lblName_3.setBounds(35, 231, 200, 14);
+		contentPane.add(lblName_3);
 		
+		t4 = new JTextField();
+		t4.setBounds(271, 231, 150, 20);
+		contentPane.add(t4);
+		t4.setColumns(10);
+
 		
-		t5 = new JTextField();
-		t5.setBounds(271, 316, 150, 20);
-		contentPane.add(t5);
-		t5.setColumns(10);
-		
-		t6 = new JTextField();
-		t6.setBounds(271, 359, 150, 20);
-		contentPane.add(t6);
-		t6.setColumns(10);
 
 		JButton btnNewButton = new JButton("Add");
 		/*btnNewButton.addActionListener(new ActionListener() {
