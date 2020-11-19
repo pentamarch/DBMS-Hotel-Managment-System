@@ -16,7 +16,7 @@ public class HotelManagementSystem extends JFrame implements ActionListener{
         
         public HotelManagementSystem() {
 		
-                setSize(1366,430);          // setContentPane(300,300,1366,390);   frame size
+                setSize(1300,430);          // setContentPane(300,300,1366,390);   frame size
                 setLayout(null);
                 setLocation(300,300);
 
@@ -29,7 +29,7 @@ public class HotelManagementSystem extends JFrame implements ActionListener{
                 
                 
                 ImageIcon i1  = new ImageIcon(ClassLoader.getSystemResource("hotel/management/system/icons/first.jpg"));
-                Image i3 = i1.getImage().getScaledInstance(1366, 390,Image.SCALE_DEFAULT);
+                Image i3 = i1.getImage().getScaledInstance(1300, 390,Image.SCALE_DEFAULT);
                 ImageIcon i2 = new ImageIcon(i3);
                 l1 = new JLabel(i2);
                 
@@ -40,7 +40,7 @@ public class HotelManagementSystem extends JFrame implements ActionListener{
                 l1.add(lid);
                 
                 b1.setBounds(1170,325,150,50);
-		l1.setBounds(0, 0, 1366, 390);
+		l1.setBounds(0, 0, 1300, 390);
                 
                 l1.add(b1);
 		add(l1);

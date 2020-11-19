@@ -21,7 +21,7 @@ public class NewCustomer extends JFrame {
 	Connection conn = null;
 	PreparedStatement pst = null;
 	private JPanel contentPane;
-	private JTextField t1,t2,t3,t4,t5,t6,t0;
+	private JTextField t1,t2,t3,t4,t5,t6;
         JComboBox comboBox;
         JRadioButton r1,r2;
         Choice c1;
@@ -60,18 +60,13 @@ public class NewCustomer extends JFrame {
 		lblName.setBounds(118, 11, 260, 53);
 		contentPane.add(lblName);
                 
-                /*JLabel lblId = new JLabel("ID :");
+                JLabel lblId = new JLabel("ID :");
 		lblId.setBounds(35, 76, 200, 14);
 		contentPane.add(lblId);
                 
-                
-                t0 = new JTextField();
-		t0.setBounds(271, 73, 150, 20);
-		contentPane.add(t0);
-		t0.setColumns(10);
                 comboBox = new JComboBox(new String[] {"Passport", "Aadhar Card", "Voter Id", "Driving license"});
 		comboBox.setBounds(271, 73, 150, 20);
-		contentPane.add(comboBox);*/
+		contentPane.add(comboBox);
                 
                 JLabel l2 = new JLabel("Number :");
 		l2.setBounds(35, 111, 200, 14);

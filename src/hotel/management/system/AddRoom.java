@@ -110,23 +110,31 @@ public class AddRoom extends JFrame implements ActionListener{
         b1.setBackground(Color.BLACK);
         b1.setForeground(Color.WHITE);
 	contentPane.add(b1);
+
+	b2 = new JButton("Back");
+	b2.addActionListener(this);
+	b2.setBounds(198, 321, 111, 33);
+        b2.setBackground(Color.BLACK);
+        b2.setForeground(Color.WHITE);
+	contentPane.add(b2);
+
 	
         contentPane.setBackground(Color.WHITE);
     
     }
     
-    /*public void actionPerformed(ActionEvent ae){
+    public void actionPerformed(ActionEvent ae){
         try{
             
             if(ae.getSource() == b1){
                 try{
                 conn c = new conn();
                 String room = t4.getText();
-                String available = (String)comboBox.getSelectedItem();
-                String status = (String)comboBox_2.getSelectedItem();
+                String availability = (String)comboBox.getSelectedItem();
+                String cleaning_status = (String)comboBox_2.getSelectedItem();
                 String price  = t2.getText();
-                String type = (String)comboBox_3.getSelectedItem();
-                String str = "INSERT INTO room values( '"+room+"', '"+available+"', '"+status+"','"+price+"', '"+type+"')";
+                String bed = (String)comboBox_3.getSelectedItem();
+                String str = "INSERT INTO room values( '"+room+"', '"+availability+"', '"+cleaning_status+"','"+price+"', '"+bed+"')";
               
                 
 		c.s.executeUpdate(str);
@@ -142,12 +150,6 @@ public class AddRoom extends JFrame implements ActionListener{
             }
         }catch(Exception eee){
             
-        }*/
-
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
-
-} 
-
+}

@@ -75,14 +75,14 @@ public class AddEmployee extends JFrame{ //Third Frame
             c1.setBounds(200,170,150,30);
             add(c1);
             		
-            JLabel Nationality = new JLabel("SALARY");
-            Nationality.setFont(new Font("Tahoma", Font.PLAIN, 17));
-            Nationality.setBounds(60, 220, 150, 27);
-            add(Nationality);
+//            JLabel Nationality = new JLabel("SALARY");
+//            Nationality.setFont(new Font("Tahoma", Font.PLAIN, 17));
+//            Nationality.setBounds(60, 220, 150, 27);
+//            add(Nationality);
 			
-            textField_3 = new JTextField();
-            textField_3.setBounds(200, 220, 150, 27);
-            add(textField_3);
+//            textField_3 = new JTextField();
+//            textField_3.setBounds(200, 220, 150, 27);
+//            add(textField_3);
 	
             JLabel Name = new JLabel("PHONE");
             Name.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -133,7 +133,7 @@ public class AddEmployee extends JFrame{ //Third Frame
                 public void actionPerformed(ActionEvent ae){
                     String name = textField.getText();
                     String age = textField_1.getText();
-                    String salary = textField_3.getText();
+                    //String salary = textField_3.getText();
                     String phone = textField_4.getText();
                     String aadhar = textField_5.getText();
                     String email = textField_6.getText();
@@ -150,17 +150,22 @@ public class AddEmployee extends JFrame{ //Third Frame
                             
                     String s6 = (String)c1.getSelectedItem();
                     
-                    /*try {
+                   try {
                         conn c = new conn();
-                        String str = "INSERT INTO employee values( '"+name+"', '"+age+"', '"+gender+"','"+s6+"', '"+salary+"', '"+phone+"','"+aadhar+"', '"+email+"')";
+                        String q = "select des_id from designation where job='"+s6+"'";
+                        ResultSet rs = c.s.executeQuery(q); 
+                        if(rs.next())
+                        {int des_id=rs.getInt("des_id");
+                        String str = "INSERT INTO employee values( '"+aadhar+"','"+name+"', '"+age+"', '"+gender+"', '"+phone+"', '"+email+"','"+des_id+"')";
                         
                         c.s.executeUpdate(str);
+                        }
                         JOptionPane.showMessageDialog(null,"Employee Added");
                         setVisible(false);
                     
                     } catch (Exception e) {
                         e.printStackTrace();
-        	    }*/
+        	    }
 		}
             });
 			

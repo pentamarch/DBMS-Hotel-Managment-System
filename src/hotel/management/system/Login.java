@@ -19,7 +19,6 @@ public class Login extends JFrame implements ActionListener{
     JButton b1,b2;
 
     Login(){
-
         super("Login");
 
         setLayout(null);
@@ -75,30 +74,29 @@ public class Login extends JFrame implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent ae){
-        /*if(ae.getSource()==b1){
+        if(ae.getSource()==b1){
         try{
             conn c1 = new conn();
             String u = t1.getText();
             String v = t2.getText();
             
-            String q = "select * from login where username='"+u+"' and password='"+v+"'";
+            String q = "select * from manager where username='"+u+"' and passkey='"+v+"'";
             
             ResultSet rs = c1.s.executeQuery(q); 
             if(rs.next()){ 
                 new Dashboard().setVisible(true);
                 setVisible(false);
             }else{
-                JOptionPane.showMessageDialog(null, "Invalid login");
-                setVisible(false);
+                JOptionPane.showMessageDialog(null, "Invalid username or password");
+                this.setVisible(false);
             }
         }catch(Exception e){
             e.printStackTrace();
         }
         }else if(ae.getSource()==b2){
             System.exit(0);
-        }*/
-          new Dashboard().setVisible(true);
-          setVisible(false);
+        }
+          
     }
     public static void main(String[] arg){
         new Login();

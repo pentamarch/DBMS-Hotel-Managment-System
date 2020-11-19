@@ -67,32 +67,13 @@ public class Reception extends JFrame {
 		btnNewButton.setBounds(10, 70, 200, 30);
                 btnNewButton.setBackground(Color.BLACK);
                 btnNewButton.setForeground(Color.WHITE);
-                contentPane.add(btnNewButton);
-                
-                JButton btnNewButton2 = new JButton("Allocate Multiple Room");
-		btnNewButton2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				try{
-				SameCustomerDR room = new SameCustomerDR();
-				room.setVisible(true);
-                                setVisible(false);
-				}
-				catch(Exception e){
-					e.printStackTrace();
-				}
-				
-			}
-		});
-		btnNewButton2.setBounds(10, 150, 200, 30);
-                btnNewButton2.setBackground(Color.BLACK);
-                btnNewButton2.setForeground(Color.WHITE);
 
-		contentPane.add(btnNewButton2);
+		contentPane.add(btnNewButton);
 		
 		
 		
-		JButton btnNewButton_8 = new JButton("All Employee Info");
-		btnNewButton_8.addActionListener(new ActionListener() {
+		/*JButton btnNewButton_2 = new JButton("All Employee Info");
+		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
 				
@@ -107,11 +88,11 @@ public class Reception extends JFrame {
 			
 			}
 		});
-		btnNewButton_8.setBounds(10, 110, 200, 30);                
-                btnNewButton_8.setBackground(Color.BLACK);
-                btnNewButton_8.setForeground(Color.WHITE);
+		btnNewButton_2.setBounds(10, 150, 200, 30);                
+                btnNewButton_2.setBackground(Color.BLACK);
+                btnNewButton_2.setForeground(Color.WHITE);
 
-		contentPane.add(btnNewButton_8);
+		contentPane.add(btnNewButton_2);*/
 		
 		JButton btnNewButton_3 = new JButton("Customer Info");
 		btnNewButton_3.addActionListener(new ActionListener() {
@@ -149,7 +130,7 @@ public class Reception extends JFrame {
 				}
 			}
 		});
-		btnNewButton_4.setBounds(10, 230, 200, 30);
+		btnNewButton_4.setBounds(10, 270, 200, 30);
                 btnNewButton_4.setBackground(Color.BLACK);
                 btnNewButton_4.setForeground(Color.WHITE);
 
@@ -168,7 +149,7 @@ public class Reception extends JFrame {
 				}
 			}
 		});
-		btnNewButton_5.setBounds(10, 270, 200, 30);
+		btnNewButton_5.setBounds(10, 310, 200, 30);
                 btnNewButton_5.setBackground(Color.BLACK);
                 btnNewButton_5.setForeground(Color.WHITE);
 
@@ -187,7 +168,7 @@ public class Reception extends JFrame {
 				}
 			}
 		});
-		btnNewButton_6.setBounds(10, 310, 200, 30);
+		btnNewButton_6.setBounds(10, 350, 200, 30);
                 btnNewButton_6.setBackground(Color.BLACK);
                 btnNewButton_6.setForeground(Color.WHITE);
 
@@ -208,7 +189,7 @@ public class Reception extends JFrame {
 				}
 			}
 		});
-		btnSearchRoom.setBounds(10, 350, 200, 30);
+		btnSearchRoom.setBounds(10, 430, 200, 30);
                 btnSearchRoom.setBackground(Color.BLACK);
                 btnSearchRoom.setForeground(Color.WHITE);
 
@@ -227,7 +208,7 @@ public class Reception extends JFrame {
 				
 			}
 		});
-		btnNewButton_7.setBounds(10, 390, 200, 30);
+		btnNewButton_7.setBounds(10, 470, 200, 30);
                 btnNewButton_7.setBackground(Color.BLACK);
                 btnNewButton_7.setForeground(Color.WHITE);
 

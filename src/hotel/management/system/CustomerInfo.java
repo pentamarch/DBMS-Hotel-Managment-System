@@ -38,12 +38,12 @@ public class CustomerInfo extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
+				/*try {
 					CustomerInfo frame = new CustomerInfo();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
+				}*/
 			}
 		});
 	}
