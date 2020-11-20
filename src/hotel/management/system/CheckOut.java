@@ -74,13 +74,13 @@ public class CheckOut extends JFrame{
 		contentPane.add(lblName);
                 
                 c1 = new Choice();
-               /* try{
+                try{
                     conn c = new conn();
                     ResultSet rs = c.s.executeQuery("select * from customer");
                     while(rs.next()){
                         c1.add(rs.getString("number"));    
                     }
-                }catch(Exception e){ }*/
+                }catch(Exception e){ }
                 c1.setBounds(130, 82, 150, 20);
 		contentPane.add(c1);
                 
@@ -91,7 +91,7 @@ public class CheckOut extends JFrame{
                 l2.setBounds(290,82,20,20);
                 add(l2);
                 
-                /*l2.addActionListener(new ActionListener(){
+                l2.addActionListener(new ActionListener(){
                     
                     public void actionPerformed(ActionEvent ae){
                         System.out.println("Hi");
@@ -107,7 +107,7 @@ public class CheckOut extends JFrame{
                             }
                         }catch(Exception e){ }
                     }
-                });*/
+                });
 
 		
 		JLabel lblRoomNumber = new JLabel("Room Number:");

@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,8 +20,6 @@ import java.sql.*;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.util.Vector;
-import javax.swing.table.DefaultTableModel;
 public class Room extends JFrame {
 	Connection conn = null;
 	private JPanel contentPane;
@@ -71,42 +70,22 @@ public class Room extends JFrame {
 		contentPane.add(table);
 		
 		JButton btnLoadData = new JButton("Load Data");
-		btnLoadData.addActionListener(new ActionListener() {
+		/*btnLoadData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-                            String path="jdbc:mysql://localhost:3306/hotel_management?zeroDateTimeBehavior=convertToNull";
-                            DefaultTableModel model = new DefaultTableModel();
-                            String[] columnNames = {"Room number", "Availability", "Clean Status", "Price","Bed Type"};
-                            String available=null,clean=null,bed=null;
-                            int room_no;
-                            float price;
-                            model.setColumnIdentifiers(columnNames);
-                            try{
-                                    Class.forName("com.mysql.jdbc.Driver");
-                                    Connection conn=DriverManager.getConnection(path,"sanskruti","2602");
-                                    Statement st=conn.createStatement();
-                                    ResultSet rs;
-                                    String query1= "select * from rooms";
-                                    //PreparedStatement pst = conn.prepareStatement(displayCustomersql);
-                                    rs = st.executeQuery(query1);
-                                    while(rs.next())
-                                    {
-                                        room_no = rs.getInt("room_no");
-                                        available = rs.getString("availability");
-                                        clean = rs.getString("cleaning_status");
-                                        price = rs.getFloat("price");
-                                        bed=rs.getString("type");
-
-                                        model.addRow(new Object[]{room_no, available, clean, price,bed});
-                                    }
-                                   // table.setModel(DbUtils.resultSetToTableModel(rs));
-
-
-                            }
-                            catch(Exception e1){
-                                    e1.printStackTrace();
-                            }
+				try{
+                                    corn c = new corn();
+					String displayCustomersql = "select * from Room";
+					//PreparedStatement pst = conn.prepareStatement(displayCustomersql);
+					ResultSet rs = c.s.executeQuery(displayCustomersql);
+					table.setModel(DbUtils.resultSetToTableModel(rs));
+					
+					
+				}
+				catch(Exception e1){
+					e1.printStackTrace();
+				}
 			}
-		});
+		});*/
 		btnLoadData.setBounds(100, 470, 120, 30);
                 btnLoadData.setBackground(Color.BLACK);
                 btnLoadData.setForeground(Color.WHITE);
@@ -149,3 +128,4 @@ public class Room extends JFrame {
 	}
 
 }
+

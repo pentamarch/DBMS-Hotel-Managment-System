@@ -7,8 +7,6 @@ import java.awt.EventQueue;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 
 public class AddEmployee extends JFrame{ //Third Frame
@@ -77,34 +75,41 @@ public class AddEmployee extends JFrame{ //Third Frame
             c1.setBounds(200,170,150,30);
             add(c1);
             		
-            
+//            JLabel Nationality = new JLabel("SALARY");
+//            Nationality.setFont(new Font("Tahoma", Font.PLAIN, 17));
+//            Nationality.setBounds(60, 220, 150, 27);
+//            add(Nationality);
+			
+//            textField_3 = new JTextField();
+//            textField_3.setBounds(200, 220, 150, 27);
+//            add(textField_3);
 	
             JLabel Name = new JLabel("PHONE");
             Name.setFont(new Font("Tahoma", Font.PLAIN, 17));
-            Name.setBounds(60, 220, 150, 27);
+            Name.setBounds(60, 270, 150, 27);
             add(Name);
 	
             textField_4 = new JTextField();
-            textField_4.setBounds(200, 220, 150, 27);
+            textField_4.setBounds(200, 270, 150, 27);
             add(textField_4);
 	
             JLabel Phno = new JLabel("AADHAR");
             Phno.setFont(new Font("Tahoma", Font.PLAIN, 17));
-            Phno.setBounds(60, 270, 150, 27);
+            Phno.setBounds(60, 320, 150, 27);
             add(Phno);
 			
             textField_5 = new JTextField();
-            textField_5.setBounds(200, 270, 150, 27);
+            textField_5.setBounds(200, 320, 150, 27);
             add(textField_5);
 	
             
             JLabel email = new JLabel("EMAIL");
             email.setFont(new Font("Tahoma", Font.PLAIN, 17));
-            email.setBounds(60, 320, 150, 27);
+            email.setBounds(60, 370, 150, 27);
             add(email);
 			
             textField_6 = new JTextField();
-            textField_6.setBounds(200, 320, 150, 27);
+            textField_6.setBounds(200, 370, 150, 27);
             add(textField_6);
 	
             setVisible(true);
@@ -123,47 +128,46 @@ public class AddEmployee extends JFrame{ //Third Frame
             image.setBounds(410,80,480,410);
             add(image);
 
-             Next.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                   String path="jdbc:mysql://localhost:3306/hotel_management?zeroDateTimeBehavior=convertToNull";
-                   try
-                   {
-                       String name = textField.getText();
-                       String age = textField_1.getText();
-                       String phone = textField_4.getText();
-                       String aadhar = textField_5.getText();
-                       String email = textField_6.getText();
-                       String gender = null;
-                       int id = 0;
-                       if(NewRadioButton.isSelected()){
-                         gender = "male";
-                       }else if(Female.isSelected()){
-                         gender = "female";
-                       }
-                       String s6 = (String)c1.getSelectedItem();
-                       Class.forName("com.mysql.jdbc.Driver");
-                       Connection conn=DriverManager.getConnection(path,"sanskruti","2602");
-                       Statement st=conn.createStatement();
-                       ResultSet rs,rs1;
-                       String query1="select designation_id from designation where job='"+s6+"'";
-                       rs1 =st.executeQuery(query1);
-                       while(rs1.next())
-                       {
-                           id=rs1.getInt("designation_id");
-                       }
-                       String query2="insert into employee values('"+aadhar+"','"+name+"', '"+age+"', '"+gender+"','"+phone+"','"+email+"','"+id+"')";
-                       st.executeUpdate(query2);
-                       JOptionPane.showMessageDialog(null, "Inserted");
-                   }
-                   catch(SQLException ex)
-                   {
-                         JOptionPane.showMessageDialog(null, "failed to insert"+ex);
-                   } 
-                   catch (ClassNotFoundException ex) {
-                        Logger.getLogger(NewCustomer.class.getName()).log(Level.SEVERE, null, ex);
-                   }
-            }
-        });
+            
+            Next.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent ae){
+                    String name = textField.getText();
+                    String age = textField_1.getText();
+                    //String salary = textField_3.getText();
+                    String phone = textField_4.getText();
+                    String aadhar = textField_5.getText();
+                    String email = textField_6.getText();
+                   
+                    String gender = null;
+                    
+                    if(NewRadioButton.isSelected()){
+                        gender = "male";
+                    
+                    }else if(Female.isSelected()){
+                        gender = "female";
+                    }
+
+                            
+                    String s6 = (String)c1.getSelectedItem();
+                    
+                   try {
+                        conn c = new conn();
+                        String q = "select des_id from designation where job='"+s6+"'";
+                        ResultSet rs = c.s.executeQuery(q); 
+                        if(rs.next())
+                        {int des_id=rs.getInt("des_id");
+                        String str = "INSERT INTO employee values( '"+aadhar+"','"+name+"', '"+age+"', '"+gender+"', '"+phone+"', '"+email+"','"+des_id+"')";
+                        
+                        c.s.executeUpdate(str);
+                        }
+                        JOptionPane.showMessageDialog(null,"Employee Added");
+                        setVisible(false);
+                    
+                    } catch (Exception e) {
+                        e.printStackTrace();
+        	    }
+		}
+            });
 			
             setSize(900,600);
             setVisible(true);
@@ -175,3 +179,4 @@ public class AddEmployee extends JFrame{ //Third Frame
         new AddEmployee();
     }   
 }
+

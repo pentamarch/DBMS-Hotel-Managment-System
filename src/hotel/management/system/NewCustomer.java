@@ -18,17 +18,12 @@ import java.sql.*;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.math.BigInteger;
-import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class NewCustomer extends JFrame {
 	Connection conn = null;
 	PreparedStatement pst = null;
 	private JPanel contentPane;
 	private JTextField t1,t2,t3,t4,t5,t6;
-        JComboBox comboBox,comboBox1;
+        JComboBox comboBox;
         JRadioButton r1,r2;
         Choice c1;
 	/**
@@ -66,16 +61,19 @@ public class NewCustomer extends JFrame {
 		lblName.setBounds(118, 11, 260, 53);
 		contentPane.add(lblName);
                 
-                /*JLabel lblId = new JLabel("Rooms Required :");
+                JLabel lblId = new JLabel("ID :");
 		lblId.setBounds(35, 76, 200, 14);
-		contentPane.add(lblId);*/
+		contentPane.add(lblId);
                 
+                comboBox = new JComboBox(new String[] {"Passport", "Aadhar Card", "Voter Id", "Driving license"});
+		comboBox.setBounds(271, 73, 150, 20);
+		contentPane.add(comboBox);
                 
-                JLabel l2 = new JLabel("Aadhar Number :");
+                JLabel l2 = new JLabel("Number :");
 		l2.setBounds(35, 111, 200, 14);
 		contentPane.add(l2);
                 
-                t1 = new JTextField();//adhar
+                t1 = new JTextField();
 		t1.setBounds(271, 111, 150, 20);
 		contentPane.add(t1);
 		t1.setColumns(10);
@@ -85,7 +83,7 @@ public class NewCustomer extends JFrame {
 		contentPane.add(lblName_1);
 		
 		t2 = new JTextField();
-		t2.setBounds(271, 151, 150, 20);//name
+		t2.setBounds(271, 151, 150, 20);
 		contentPane.add(t2);
 		t2.setColumns(10);
 
@@ -94,7 +92,7 @@ public class NewCustomer extends JFrame {
 		lblGender.setBounds(35, 191, 200, 14);
 		contentPane.add(lblGender);
                 
-                r1 = new JRadioButton("Male");//gender
+                r1 = new JRadioButton("Male");
                 r1.setFont(new Font("Raleway", Font.BOLD, 14));
                 r1.setBackground(Color.WHITE);
                 r1.setBounds(271, 191, 80, 12);
@@ -110,79 +108,89 @@ public class NewCustomer extends JFrame {
 		lblCountry.setBounds(35, 231, 200, 14);
 		contentPane.add(lblCountry);
 		
+		JLabel lblReserveRoomNumber = new JLabel("Allocated Room Number :");
+		lblReserveRoomNumber.setBounds(35, 274, 200, 14);
+		contentPane.add(lblReserveRoomNumber);
                 
-		t3 = new JTextField(); //country
-		t3.setBounds(271, 231, 150, 20);
-		contentPane.add(t3);
-		t3.setColumns(10);
-                
-                JLabel lbldays = new JLabel("Days :");
-                 lbldays.setBounds(35, 280, 200, 14);
-		contentPane.add( lbldays);
-              
-                
-             	t4 = new JTextField(); //days
-		t4.setBounds(271, 280, 150, 20);
-		contentPane.add(t4);
-		t4.setColumns(10);
-                
-              
+                c1 = new Choice();
+               /* try{
+                    conn c = new conn();
+                    ResultSet rs = c.s.executeQuery("select * from room");
+                    while(rs.next()){
+                        c1.add(rs.getString("room_number"));    
+                    }
+                }catch(Exception e){ }*/
+                c1.setBounds(271, 274, 150, 20);
+		contentPane.add(c1);
 		
-		JLabel lblCheckInStatus = new JLabel("Deposite :");
+		JLabel lblCheckInStatus = new JLabel("Checked-In :");
 		lblCheckInStatus.setBounds(35, 316, 200, 14);
 		contentPane.add(lblCheckInStatus);
-                
-                
 		
-		t5 = new JTextField();//deposite
-		t5.setBounds(271, 316, 150, 20);
-		contentPane.add(t5);
-		t5.setColumns(10);
-		
-		JLabel lblDeposite = new JLabel("Rooms Required :");
+		JLabel lblDeposite = new JLabel("Deposit :");
 		lblDeposite.setBounds(35, 359, 200, 14);
 		contentPane.add(lblDeposite);
 		
 		
 		
-		comboBox = new JComboBox(new String[] {"1", "2", "3", "4"});
-		comboBox.setBounds(271,359, 150, 20);
-		contentPane.add(comboBox);
-                
+		
+		
+		t3 = new JTextField();
+		t3.setBounds(271, 231, 150, 20);
+		contentPane.add(t3);
+		t3.setColumns(10);
+		
+		
+		t5 = new JTextField();
+		t5.setBounds(271, 316, 150, 20);
+		contentPane.add(t5);
+		t5.setColumns(10);
+		
+		t6 = new JTextField();
+		t6.setBounds(271, 359, 150, 20);
+		contentPane.add(t6);
+		t6.setColumns(10);
 
 		JButton btnNewButton = new JButton("Add");
-		btnNewButton.addActionListener(new ActionListener() {
+		/*btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-                           String path="jdbc:mysql://localhost:3306/hotel_management?zeroDateTimeBehavior=convertToNull";
-                           try
-                           {
-                               Calendar calendar = Calendar.getInstance();
-                               java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
-                               String radio=null;
-                               Class.forName("com.mysql.jdbc.Driver");
-                               Connection conn=DriverManager.getConnection(path,"sanskruti","2602");
-                               Statement st=conn.createStatement();
-                               ResultSet rs;
-                                 if(r1.isSelected()){ 
+                            conn c = new conn();
+                            String radio = null;
+                            
+                            if(r1.isSelected()){ 
                                 radio = "Male";
                             }
                             else if(r2.isSelected()){ 
                                 radio = "Female";
                             }
-                            String asastring = (String) comboBox.getSelectedItem();
                             
-                            String query2="insert into customers(adhar,name,gender,country,checkin,no_of_days,deposite,no_of_rooms) values('"+t1.getText()+"','"+t2.getText()+"','"+radio+"','"+t3.getText()+"','"+ourJavaDateObject+"','"+t4.getText()+"','"+t5.getText()+"','"+ asastring+"')";
-                            st.executeUpdate(query2);
-                            JOptionPane.showMessageDialog(null, "Inserted");
-                           }
-                           catch(SQLException ex)
-                           {
-                                 JOptionPane.showMessageDialog(null, "failed to insert"+ex);
-                           } catch (ClassNotFoundException ex) {
-                                Logger.getLogger(NewCustomer.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                    }
-		});
+                            String s6 = c1.getSelectedItem();
+                          
+                            try{
+	    			
+                                String s1 = (String)comboBox.getSelectedItem(); 
+	    			String s2 =  t1.getText();
+	    			String s3 =  t2.getText();
+                                String s4 =  radio;
+	    			String s5 =  t3.getText();
+	    			String s7 =  t5.getText();
+                                String s8 =  t6.getText();
+                                
+                                String q1 = "insert into customer values('"+s1+"','"+s2+"','"+s3+"','"+s4+"','"+s5+"','"+s6+"','"+s7+"','"+s8+"')";
+                                String q2 = "update room set availability = 'Occupied' where room_number = "+s6;
+                                c.s.executeUpdate(q1);
+                                c.s.executeUpdate(q2);
+	    			
+	    			
+	    			JOptionPane.showMessageDialog(null, "Data Inserted Successfully");
+                                new Reception().setVisible(true);
+                                setVisible(false);
+	    		}
+		    		catch(NumberFormatException s){
+		    			JOptionPane.showMessageDialog(null, "Please enter a valid Number");
+			}
+			}
+		});*/
 		btnNewButton.setBounds(100, 430, 120, 30);
                 btnNewButton.setBackground(Color.BLACK);
                 btnNewButton.setForeground(Color.WHITE);
@@ -203,3 +211,4 @@ public class NewCustomer extends JFrame {
                 getContentPane().setBackground(Color.WHITE);
 	}
 }
+

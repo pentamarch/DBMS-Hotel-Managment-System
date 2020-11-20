@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,10 +13,8 @@ import javax.swing.border.*;
 import java.awt.event.*;
 import java.sql.*;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class AddRoom extends JFrame {
+public class AddRoom extends JFrame implements ActionListener{
 
     private JPanel contentPane;
     private JTextField t1,t2,t3,t4;
@@ -55,7 +54,7 @@ public class AddRoom extends JFrame {
 	contentPane.add(l1);
         
         
-        t4 = new JTextField();//taking room number
+        t4 = new JTextField();
 	t4.setBounds(174, 70, 156, 20);
 	contentPane.add(t4);
         
@@ -66,10 +65,10 @@ public class AddRoom extends JFrame {
 	l2.setBounds(64, 110, 102, 22);
 	contentPane.add(l2);
         
-        comboBox = new JComboBox(new String[] { "yes", "no" });//taking availability
+        comboBox = new JComboBox(new String[] { "Available", "Occupied" });
 	comboBox.setBounds(176, 110, 154, 20);
 	contentPane.add(comboBox);
-        String available = (String) comboBox.getSelectedItem();
+
 
 	JLabel l3 = new JLabel("Cleaning Status");
 	l3.setForeground(new Color(25, 25, 112));
@@ -77,18 +76,17 @@ public class AddRoom extends JFrame {
 	l3.setBounds(64, 150, 102, 22);
 	contentPane.add(l3);
         
-        comboBox_2 = new JComboBox(new String[] { "clean", "dirty" });//taking cleaning status
+        comboBox_2 = new JComboBox(new String[] { "Cleaned", "Dirty" });
 	comboBox_2.setBounds(176, 150, 154, 20);
 	contentPane.add(comboBox_2);
-        String cleaning = (String) comboBox_2.getSelectedItem();
-        
+
 	JLabel l4 = new JLabel("Price");
 	l4.setForeground(new Color(25, 25, 112));
 	l4.setFont(new Font("Tahoma", Font.BOLD, 14));
 	l4.setBounds(64, 190, 102, 22);
 	contentPane.add(l4);
         
-        t2 = new JTextField();//taking price
+        t2 = new JTextField();
 	t2.setBounds(174, 190, 156, 20);
 	contentPane.add(t2);
 
@@ -99,50 +97,61 @@ public class AddRoom extends JFrame {
 	contentPane.add(l5);
 
 
-        comboBox_3 = new JComboBox(new String[] { "Single Bed", "Double Bed"});//taking bed type
+        comboBox_3 = new JComboBox(new String[] { "Single Bed", "Double Bed"});
 	comboBox_3.setBounds(176, 230, 154, 20);
 	contentPane.add(comboBox_3);
-        String type = (String) comboBox_3.getSelectedItem();
 
 	
 
 	
 
 	b1 = new JButton("Add");
-        b1.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                   String path="jdbc:mysql://localhost:3306/hotel_management?zeroDateTimeBehavior=convertToNull";
-                   try
-                   {
-                      
-                       Class.forName("com.mysql.jdbc.Driver");
-                       Connection conn=DriverManager.getConnection(path,"sanskruti","2602");
-                       Statement st=conn.createStatement();
-                       ResultSet rs;
-                      
-                       String query2="insert into rooms values('"+t4.getText()+"','"+available+"','"+cleaning+"','"+t2.getText()+"','"+type+"')";
-                       st.executeUpdate(query2);
-                       JOptionPane.showMessageDialog(null, "Inserted");
-                   }
-                   catch(SQLException ex)
-                   {
-                         JOptionPane.showMessageDialog(null, "failed to insert"+ex);
-                   } 
-                   catch (ClassNotFoundException ex) {
-                        Logger.getLogger(NewCustomer.class.getName()).log(Level.SEVERE, null, ex);
-                   }
-            }
-        });
+	b1.addActionListener(this);
 	b1.setBounds(64, 321, 111, 33);
         b1.setBackground(Color.BLACK);
         b1.setForeground(Color.WHITE);
 	contentPane.add(b1);
+
+	b2 = new JButton("Back");
+	b2.addActionListener(this);
+	b2.setBounds(198, 321, 111, 33);
+        b2.setBackground(Color.BLACK);
+        b2.setForeground(Color.WHITE);
+	contentPane.add(b2);
+
 	
         contentPane.setBackground(Color.WHITE);
     
     }
     
-  
-
-} 
+    public void actionPerformed(ActionEvent ae){
+        try{
+            
+            if(ae.getSource() == b1){
+                try{
+                conn c = new conn();
+                String room = t4.getText();
+                String availability = (String)comboBox.getSelectedItem();
+                String cleaning_status = (String)comboBox_2.getSelectedItem();
+                String price  = t2.getText();
+                String bed = (String)comboBox_3.getSelectedItem();
+                String str = "INSERT INTO room values( '"+room+"', '"+availability+"', '"+cleaning_status+"','"+price+"', '"+bed+"')";
+              
+                
+		c.s.executeUpdate(str);
+		JOptionPane.showMessageDialog(null, "Room Successfully Added");
+                this.setVisible(false);
+               
+                }catch(Exception ee){
+                    System.out.println(ee);
+                }
+            }
+            else if(ae.getSource() == b2){
+                this.setVisible(false);
+            }
+        }catch(Exception eee){
+            
+        }
+    }
+}
 
