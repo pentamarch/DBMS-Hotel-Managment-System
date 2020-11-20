@@ -48,7 +48,7 @@ public class HotelManagementSystem extends JFrame implements ActionListener{
                 b1.addActionListener(this);
                 setVisible(true);
                 
-                while(true){
+               /* while(true){
                         lid.setVisible(false); // lid =  j label
                     try{
                         Thread.sleep(500); //1000 = 1 second
@@ -57,7 +57,7 @@ public class HotelManagementSystem extends JFrame implements ActionListener{
                     try{
                         Thread.sleep(500);
                     }catch(Exception e){}
-                }
+                }*/
 	}
         
         public void actionPerformed(ActionEvent ae){

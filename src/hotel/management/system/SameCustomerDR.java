@@ -17,6 +17,9 @@ import java.sql.*;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class SameCustomerDR extends JFrame {
 	Connection conn = null;
 	PreparedStatement pst = null;
@@ -83,27 +86,49 @@ public class SameCustomerDR extends JFrame {
 		contentPane.add(t2);
 		t2.setColumns(10);
                 
-                JLabel lblName_2 = new JLabel("No of days :");
-		lblName_2.setBounds(35, 191, 200, 14);
-		contentPane.add(lblName_2);
-		
-		t3 = new JTextField();
-		t3.setBounds(271, 191, 150, 20);
-		contentPane.add(t3);
-		t3.setColumns(10);
-                
-                JLabel lblName_3 = new JLabel("Deposite :");
-		lblName_3.setBounds(35, 231, 200, 14);
-		contentPane.add(lblName_3);
-		
-		t4 = new JTextField();
-		t4.setBounds(271, 231, 150, 20);
-		contentPane.add(t4);
-		t4.setColumns(10);
-
+               
 		
 
 		JButton btnNewButton = new JButton("Add");
+                btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+                           String path="jdbc:mysql://localhost:3306/hotel_management?zeroDateTimeBehavior=convertToNull";
+                           float price=0,total=0;
+                           int days=0;
+                           try
+                           {
+                               
+                                Class.forName("com.mysql.jdbc.Driver");
+                                Connection conn=DriverManager.getConnection(path,"sanskruti","2602");
+                                Statement st=conn.createStatement();
+                                Statement st1=conn.createStatement();
+                                Statement st2=conn.createStatement();
+                                ResultSet rs1,rs2,rs3;
+                                String query1="select price from rooms where room_no='"+ t2.getText()+"'";
+                                rs1=st.executeQuery(query1);
+                                String query2="select no_of_days from customers where adhar='"+ t1.getText()+"'";
+                                rs2=st1.executeQuery(query2);
+                                while(rs1.next())
+                                {
+                                   price=rs1.getFloat("price");
+                                }
+                                while(rs2.next())
+                                {
+                                   days=rs2.getInt("no_of_days");
+                                }
+                                total=price*days;
+                                String query3="insert into booking values('"+t1.getText()+"','"+t2.getText()+"','"+total+"')";
+                                st2.executeUpdate(query3);
+                                JOptionPane.showMessageDialog(null, "Inserted");
+                           }
+                           catch(SQLException ex)
+                           {
+                                 JOptionPane.showMessageDialog(null, "failed to insert"+ex);
+                           } catch (ClassNotFoundException ex) {
+                                Logger.getLogger(NewCustomer.class.getName()).log(Level.SEVERE, null, ex);
+                           }
+                    }
+		});
 		/*btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
                             conn c = new conn();

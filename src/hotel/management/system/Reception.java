@@ -219,6 +219,7 @@ public class Reception extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				try {
                                     new Login().setVisible(true);
+                                    //Reception().setVisible(false);
                                     setVisible(false);
                                     
 				} catch (Exception e) {
