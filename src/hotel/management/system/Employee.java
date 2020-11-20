@@ -65,20 +65,20 @@ public class Employee extends JFrame {
 		contentPane.add(table);
 		
 		JButton btnLoadData = new JButton("Load Data");
-		/*btnLoadData.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try{
-                                    conn c = new conn();
-				String displayCustomersql = "select * from Employee";
-				ResultSet rs = c.s.executeQuery(displayCustomersql);
-				table.setModel(DbUtils.resultSetToTableModel(rs));
-			}
-				catch(Exception e1){
-					e1.printStackTrace();
-				}
-			}
-			
-		});*/
+//		btnLoadData.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				try{
+//                                    conn c = new conn();
+//				String displayCustomersql = "select * from employee";
+//				ResultSet rs = c.s.executeQuery(displayCustomersql);
+//				table.setModel(DbUtils.resultSetToTableModel(rs));
+//			}
+//				catch(Exception e1){
+//					e1.printStackTrace();
+//				}
+//			}
+//			
+//		});
 		btnLoadData.setBounds(350, 500, 120, 30);
                 btnLoadData.setBackground(Color.BLACK);
                 btnLoadData.setForeground(Color.WHITE);
